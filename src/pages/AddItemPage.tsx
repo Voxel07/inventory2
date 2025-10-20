@@ -39,7 +39,7 @@ export const AddItemPage: React.FC = () => {
   const loadStorageLocations = async () => {
     try {
       const locations = await pb.collection('storage_locations').getFullList<StorageLocation>({
-        sort: 'name',
+        sort: 'Name',
       });
       setStorageLocations(locations);
     } catch (err) {
@@ -108,7 +108,7 @@ export const AddItemPage: React.FC = () => {
 
         <Box component="form" onSubmit={handleSubmit} sx={{ mt: 3 }}>
           <Grid container spacing={3}>
-            <Grid item xs={12}>
+           <Grid  size={{xs:12}}>
               <TextField
                 required
                 fullWidth
@@ -121,7 +121,7 @@ export const AddItemPage: React.FC = () => {
               />
             </Grid>
 
-            <Grid item xs={12} sm={6}>
+            <Grid size={{xs:12, sm:6}}>
               <TextField
                 required
                 fullWidth
@@ -142,7 +142,7 @@ export const AddItemPage: React.FC = () => {
               />
             </Grid>
 
-            <Grid item xs={12} sm={6}>
+            <Grid size={{xs:12, sm:6}}>
               <TextField
                 required
                 fullWidth
@@ -163,7 +163,7 @@ export const AddItemPage: React.FC = () => {
               />
             </Grid>
 
-            <Grid item xs={12}>
+            <Grid size={{xs:12}}>
               <FormControl fullWidth required>
                 <InputLabel id="storage-location-label">Storage Location</InputLabel>
                 <Select
@@ -183,13 +183,13 @@ export const AddItemPage: React.FC = () => {
               </FormControl>
             </Grid>
 
-            <Grid item xs={12}>
+            <Grid  size={{xs:12}}>
               <Typography variant="h6" gutterBottom sx={{ mt: 2 }}>
                 Initial Stock (Optional)
               </Typography>
             </Grid>
 
-            <Grid item xs={12} sm={6}>
+            <Grid size={{xs:12, sm:6}}>
               <TextField
                 fullWidth
                 id="stock-change"
@@ -205,7 +205,7 @@ export const AddItemPage: React.FC = () => {
               />
             </Grid>
 
-            <Grid item xs={12} sm={6}>
+           <Grid size={{xs:12, sm:6}}>
               <TextField
                 fullWidth
                 id="reason"
@@ -218,7 +218,7 @@ export const AddItemPage: React.FC = () => {
               />
             </Grid>
 
-            <Grid item xs={12}>
+            <Grid size={{xs:12}}>
               <Button
                 type="submit"
                 fullWidth

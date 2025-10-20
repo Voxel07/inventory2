@@ -14,7 +14,8 @@ import pb from '../lib/pocketbase';
 
 export const AddStorageLocationPage: React.FC = () => {
   const [name, setName] = useState('');
-  const [description, setDescription] = useState('');
+  const [postion, setPostion] = useState('');
+  const [location, setLocation] = useState('');
   const [error, setError] = useState('');
   const [success, setSuccess] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -27,14 +28,16 @@ export const AddStorageLocationPage: React.FC = () => {
 
     try {
       await pb.collection('storage_locations').create({
-        name,
-        description,
+        Name: name,
+        Position: postion,
+        Location: location
       });
 
       setSuccess(true);
       // Reset form
       setName('');
-      setDescription('');
+      setPostion('');
+      setLocation('');
     } catch (err: any) {
       setError(err.message || 'Failed to add storage location. Please try again.');
     } finally {
@@ -63,7 +66,7 @@ export const AddStorageLocationPage: React.FC = () => {
 
         <Box component="form" onSubmit={handleSubmit} sx={{ mt: 3 }}>
           <Grid container spacing={3}>
-            <Grid item xs={12}>
+            <Grid size={{xs:12}}>
               <TextField
                 required
                 fullWidth
@@ -73,26 +76,38 @@ export const AddStorageLocationPage: React.FC = () => {
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 disabled={loading}
-                placeholder="e.g., Warehouse A, Shelf B-3"
+                placeholder="e.g., Regal A3"
               />
             </Grid>
 
-            <Grid item xs={12}>
+             <Grid size={{xs:12}}>
+              <TextField
+                required
+                fullWidth
+                id="postion"
+                label="Postion Name"
+                name="postion"
+                value={postion}
+                onChange={(e) => setPostion(e.target.value)}
+                disabled={loading}
+                placeholder="e.g., Regal A3, Fach 2"
+              />
+            </Grid>
+
+            <Grid size={{xs:12}}>
               <TextField
                 fullWidth
-                id="description"
-                label="Description"
-                name="description"
-                multiline
-                rows={4}
-                value={description}
-                onChange={(e) => setDescription(e.target.value)}
+                id="location"
+                label="Location"
+                name="location"
+                value={location}
+                onChange={(e) => setLocation(e.target.value)}
                 disabled={loading}
-                placeholder="Optional description of the storage location"
+                placeholder="Optional location of the storage location"
               />
             </Grid>
 
-            <Grid item xs={12}>
+            <Grid size={{xs:12}}>
               <Button
                 type="submit"
                 fullWidth

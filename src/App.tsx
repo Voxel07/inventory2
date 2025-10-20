@@ -7,8 +7,8 @@ import { LoginPage } from './pages/LoginPage';
 import { SignupPage } from './pages/SignupPage';
 import { InventoryPage } from './pages/InventoryPage';
 import { AddItemPage } from './pages/AddItemPage';
-import { AddStorageLocationPage } from './pages/AddStorageLocationPage';
 import { AdminPage } from './pages/AdminPage';
+import StorageLocationsPage from './pages/StorageLocationsPage';
 
 const theme = createTheme({
   palette: {
@@ -41,7 +41,7 @@ function App() {
             >
               <Route index element={<InventoryPage />} />
               <Route path="add-item" element={<AddItemPage />} />
-              <Route path="storage-locations" element={<AddStorageLocationPage />} />
+              <Route path="storage-locations" element={<StorageLocationsPage />} />
               <Route
                 path="admin"
                 element={

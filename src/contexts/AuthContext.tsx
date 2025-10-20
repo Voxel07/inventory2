@@ -48,13 +48,16 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       // Authenticate with Authentik OAuth2
       const authData = await pb.collection('users').authWithOAuth2({
         provider: 'oidc',
-        urlCallback: (url) => {
-          // Redirect to the OAuth2 provider
-          window.location.href = url;
-        },
-      });
+      }).then((authData) => {
+        console.log(authData)
 
-      setUser(authData.record as unknown as User);
+        // after the above you can also access the auth data from the authStore
+        console.log(pb.authStore.isValid);
+        console.log(pb.authStore.token);
+        console.log(pb.authStore.record.id);
+
+      });
+      // setUser(authData.record as unknown as User);
     } catch (error) {
       console.error('OAuth login failed:', error);
       throw error;
