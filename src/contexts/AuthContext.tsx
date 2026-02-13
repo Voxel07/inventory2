@@ -46,7 +46,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const loginWithOAuth = async () => {
     try {
       // Authenticate with Authentik OAuth2
-      const authData = await pb.collection('users').authWithOAuth2({
+      await pb.collection('users').authWithOAuth2({
         provider: 'oidc',
       }).then((authData) => {
         console.log(authData)
@@ -54,7 +54,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         // after the above you can also access the auth data from the authStore
         console.log(pb.authStore.isValid);
         console.log(pb.authStore.token);
-        console.log(pb.authStore.record.id);
+        console.log(pb.authStore.record?.id);
 
       });
       // setUser(authData.record as unknown as User);

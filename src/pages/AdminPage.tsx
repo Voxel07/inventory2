@@ -30,7 +30,7 @@ import type { User } from '../types';
 
 export const AdminPage: React.FC = () => {
   const [users, setUsers] = useState<User[]>([]);
-  const [loading, setLoading] = useState(true);
+
   const [error, setError] = useState('');
   const [editDialogOpen, setEditDialogOpen] = useState(false);
   const [selectedUser, setSelectedUser] = useState<User | null>(null);
@@ -48,8 +48,6 @@ export const AdminPage: React.FC = () => {
       setUsers(records);
     } catch (err: any) {
       setError(err.message || 'Failed to load users');
-    } finally {
-      setLoading(false);
     }
   };
 
